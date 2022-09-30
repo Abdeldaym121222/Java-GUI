@@ -1,0 +1,22 @@
+BDate = birth.getDate();
+        mydate = new java.sql.Date(BDate.getTime());
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
+            String Quary = "UPDATE std SET first_name=?,last_name=?,gender=?,date_of_birth=?,email=?,phone=?,depatrment=?,dormitory=?,address=? WHERE id=?";
+            ps = con.prepareStatement(Quary);
+            ps.setInt(10, Integer.valueOf(tid.getText()));
+            ps.setString(1, fname.getText());
+            ps.setString(2, lname.getText());
+            ps.setString(3, gender.getSelectedItem().toString());
+            ps.setString(4, mydate.toString());
+            ps.setString(5, email.getText());
+            ps.setString(6, phone.getText());
+            ps.setString(7, depart.getSelectedItem().toString());
+            ps.setString(8, dormitory.getSelectedItem().toString());
+            ps.setString(9, address.getText());
+            ps.executeUpdate();
+            clear();
+            Fill_table();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }

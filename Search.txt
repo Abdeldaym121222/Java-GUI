@@ -1,0 +1,28 @@
+public void Search(){
+    
+        if(search.getText().equals(""))
+           this.Fill_table();
+        else{
+            try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
+            String Quary = "SELECT * FROM `std` where id='"+search.getText()+"'";
+            ps = con.prepareStatement(Quary);
+            rs = ps.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+        }
+    }
+    public void Fill_table(){
+    
+    try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
+            String Quary = "SELECT * FROM `std`";
+            ps = con.prepareStatement(Quary);
+            rs = ps.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }

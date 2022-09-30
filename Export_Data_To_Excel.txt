@@ -1,0 +1,31 @@
+// Export data to excel file
+
+
+JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".pptx", "docx",".xlsx");
+        fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setDialogTitle("Specify a file save");
+        int userSelection = fileChooser.showSaveDialog(this);
+        if(userSelection == JFileChooser.APPROVE_OPTION){
+            File fileToSave = fileChooser.getSelectedFile();
+            //lets write to file
+         
+            try {
+                  FileWriter fw = new FileWriter(fileToSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i<jTable1.getRowCount(); i++) {
+                    for (int j = 0; j<jTable1.getColumnCount(); j++) {
+                        //write
+                        bw.write(jTable1.getValueAt(i, j).toString()+"    ,   ");
+                    }
+                    bw.newLine();//record per line 
+                }
+                JOptionPane.showMessageDialog(this, "SUCCESSFULLY LOADED","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+               JOptionPane.showMessageDialog(this, "ERROR","ERROR MESSAGE",JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
+        }

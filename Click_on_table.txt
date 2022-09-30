@@ -1,0 +1,24 @@
+int row = jTable1.getSelectedRow();
+        String click_row = jTable1.getModel().getValueAt(row, 0).toString();
+        int id = Integer.valueOf(click_row);
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
+            String Quary = "select *FROM `std` WHERE `id`='"+id+"'";
+            ps = con.prepareStatement(Quary);
+            rs = ps.executeQuery();
+            if(rs.next()){
+            
+            tid.setText(String.valueOf(rs.getInt("id")));
+            fname.setText(rs.getString("first_name"));
+            lname.setText(rs.getString("last_name"));
+            gender.setSelectedItem(rs.getString("gender"));
+            birth.setDate(rs.getDate("date_of_birth"));
+            email.setText(rs.getString("email"));
+            phone.setText(rs.getString("phone"));
+            depart.setSelectedItem(rs.getString("depatrment"));
+            dormitory.setSelectedItem(rs.getString("dormitory"));
+            address.setText(rs.getString("address"));
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }

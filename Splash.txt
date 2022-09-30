@@ -1,0 +1,14 @@
+ try{
+            for(int i=0 ; i<=100 ; i++){
+                
+                Thread.sleep(40);
+                sp.progress.setValue(i);
+                sp.sc.setText(Integer.toString(i)+"%");
+            
+            
+            }
+        }catch(Exception e){
+           
+        }
+        new Login().setVisible(true);
+        sp.setVisible(false);

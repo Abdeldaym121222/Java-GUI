@@ -1,0 +1,17 @@
+ // Upload Image
+        try{
+        JFileChooser file = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("jpg", "png","*.IMAG");
+        file.addChoosableFileFilter(filter);
+        int count = file.showSaveDialog(this);
+        if(count == JFileChooser.APPROVE_OPTION){
+        
+            File select_image = file.getSelectedFile();
+            fileName = select_image.getAbsolutePath();
+            ImageIcon icon = new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(image.getWidth(),
+                    image.getHeight(), Image.SCALE_SMOOTH));
+            image.setIcon(icon);
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,e);
+        }

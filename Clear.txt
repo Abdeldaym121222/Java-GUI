@@ -1,0 +1,20 @@
+// Clear [ textfield - checkbox - textArea -  imageIcon in label ]
+
+
+public void clear(){
+    
+    id.setText("");
+    fname.setText("");
+    lname.setText("");
+    gender.setSelectedIndex(0);
+    email.setText("");
+    phone.setText("");
+    depart.setSelectedIndex(0);
+    dormitory.setSelectedIndex(0);
+     fileName = "";
+            ImageIcon icon = new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(image.getWidth(),
+                    image.getHeight(), Image.SCALE_SMOOTH));
+            image.setIcon(icon);
+    address.setText("");
+
+    }

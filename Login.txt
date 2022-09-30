@@ -1,0 +1,19 @@
+	 
+	   // Login
+	
+	    con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root");
+	    String quary = "SELECT name , password FROM hospital.emp where name=? and password=?";
+            ps.setString(1, t1_name.getText());
+            ps.setString(2, t2_password.getText());
+
+            rs = ps.executeQuary();
+	    if(rs.next())
+		new home().setVisible(true);
+		dispose();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error");
+        }            
+
+     
+

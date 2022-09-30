@@ -1,0 +1,13 @@
+	 
+	   // Delete
+	
+	    con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root");
+	    String quary = "DELETE FROM hospital.patient WHERE name=?";
+            ps.setString(1, t1_name.getText());
+            ps.execute();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error");
+        }            
+
+     
