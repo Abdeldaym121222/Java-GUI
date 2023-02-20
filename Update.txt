@@ -2,7 +2,7 @@ BDate = birth.getDate();
 mydate = new java.sql.Date(BDate.getTime());
         try{
             con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
-            String Quary = "UPDATE std SET first_name=?,last_name=?,gender=?,date_of_birth=?,email=?,phone=?,depatrment=?,dormitory=?,address=? WHERE id=?";
+            String Quary = "UPDATE user SET  first_name=?,last_name=?,gender=?,date_of_birth=?,email=?,phone=?,depatrment=?,dormitory=?,address=? WHERE id=?";
             ps = con.prepareStatement(Quary);
             ps.setInt(10, Integer.valueOf(tid.getText()));
             ps.setString(1, fname.getText());
