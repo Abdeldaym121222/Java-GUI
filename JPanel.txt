@@ -1,0 +1,13 @@
+# Frame
+	#panel [ color - draw - image]
+
+# Layout
+	1- flowlayout  // setLayout(new FlowLayout(FlowLayout.CENTER));
+	2- gridLayout
+	3-BorderLayout
+	4-AbsoluteLayout
+
+	//p1.setBackground(Color.yellow);
+        //add(p1);
+       // this.setLayout(new FlowLayout(FlowLayout.CENTER,10,30));
+       //this.setLayout(new GridLayout(3,2,10,20));

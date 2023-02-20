@@ -1,13 +1,15 @@
-	 
-	   // Delete
-	
-	    con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root");
-	    String quary = "DELETE FROM hospital.patient WHERE name=?";
-            ps.setString(1, t1_name.getText());
-            ps.execute();
+ // delete
+        try {
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error");
-        }            
-
+            con = DriverManager.getConnection("jdbc:mysql://localhost/resturantmanagement","root","");
+            String quary = "DELETE FROM `waiter` WHERE الكود=?";
+            ps = con.prepareStatement(quary);
+            ps.setString(1, wt1.getText());
+            ps.executeUpdate();
+            clear();
+            Fill_table();
+            set_code();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
      

@@ -1,0 +1,39 @@
+//After Class
+    java.util.Date BDate;
+    java.sql.Date mydate;
+
+ // Add info
+        if (id.getText().equals("") || fname.getText().equals("") || lname.getText().equals("") || gender.getSelectedItem().toString().equals("")
+                || email.getText().equals("") || phone.getText().equals("") || depart.getSelectedItem().toString().equals("")
+                || dormitory.getSelectedItem().toString().equals("") || address.getText().isEmpty() || fileName.isEmpty())
+	  {
+            JOptionPane.showMessageDialog(null, "Missing Data");
+          } else
+		 {
+            BDate = birth.getDate();
+            mydate = new java.sql.Date(BDate.getTime());
+
+            try {
+                con = DriverManager.getConnection("jdbc:mysql://localhost/student", "root", "");
+                String Quary = "INSERT INTO `std`(`id`, `first_name`, `last_name`, `gender`, `date_of_birth`, `email`, `phone`, `depatrment`, `dormitory`, `address`, `image`) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                ps = con.prepareStatement(Quary);
+                ps.setInt(1, Integer.valueOf(id.getText()));
+                ps.setString(2, fname.getText());
+                ps.setString(3, lname.getText());
+                ps.setString(4, gender.getSelectedItem().toString());
+                ps.setString(5, mydate.toString());
+                ps.setString(6, email.getText());
+                ps.setString(7, phone.getText());
+                ps.setString(8, depart.getSelectedItem().toString());
+                ps.setString(9, dormitory.getSelectedItem().toString());
+                ps.setString(10, address.getText());
+                ps.setString(11, fileName); // for image
+               
+                if (ps.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "New Student Added Sucessful");
+                    clear();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,e);
+            }
+ 

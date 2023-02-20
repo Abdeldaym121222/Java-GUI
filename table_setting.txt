@@ -1,0 +1,22 @@
+ public void table_setting() {
+
+        // set Language from Arabic
+        jTable1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+
+        ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer())
+                .setHorizontalAlignment((int) JLabel.CENTER_ALIGNMENT);
+
+        DefaultTableCellRenderer centerRender = new DefaultTableCellRenderer();
+        centerRender.setHorizontalAlignment(JLabel.CENTER);
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRender);
+        for (int x = 0; x < jTable1.getColumnCount(); x++) {
+            jTable1.getColumnModel().getColumn(x).setCellRenderer(centerRender);
+
+        }
+
+        JTableHeader tb = jTable1.getTableHeader();
+        tb.setForeground(Color.blue);
+        tb.setFont(new java.awt.Font("Tahoma", 1, 18));
+    
+    
+    }

@@ -1,0 +1,50 @@
+private void categoryActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+       String str = category.getSelectedItem().toString();
+        //System.out.println(str);
+         
+        try{
+             con = DriverManager.getConnection("jdbc:mysql://localhost/cafemanagement", "root", "");
+             String Quary = "select name from product where category='"+str+"'";
+             ps = con.prepareStatement(Quary);
+             rs = ps.executeQuery();
+             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }                                        
+
+    private void categoryKeyPressed(java.awt.event.KeyEvent evt) {                                    
+        // TODO add your handling code here:
+        
+    }                                   
+
+    private void categoryKeyReleased(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        
+    }                                    
+
+    private void categoryMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        
+    }                                     
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        String name_row = jTable1.getModel().getValueAt(row, 0).toString();
+        try{
+             con = DriverManager.getConnection("jdbc:mysql://localhost/cafemanagement", "root", "");
+             String Quary = "select name,price from product where name='"+name_row+"'";
+             ps = con.prepareStatement(Quary);
+             rs = ps.executeQuery();
+             if(rs.next()){
+                 name.setText(rs.getString("name"));
+                 price.setText(rs.getString("price"));
+             }
+             rs.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }            

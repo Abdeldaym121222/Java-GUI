@@ -1,0 +1,5 @@
+private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {                                       
+        // TODO add your handling code here:
+        String number = jSpinner1.getValue().toString();
+        System.out.println(number);
+    }  

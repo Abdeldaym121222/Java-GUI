@@ -1,16 +1,12 @@
-public void Search(){
+    public void Fill_table(){
     
-        if(search.getText().equals(""))
-           this.Fill_table();
-        else{
-            try{
+    try{
             con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
-            String Quary = "SELECT * FROM `std` where id='"+search.getText()+"'";
+            String Quary = "SELECT * FROM `std`";
             ps = con.prepareStatement(Quary);
             rs = ps.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e);
-        }
         }
     }

@@ -1,5 +1,5 @@
 BDate = birth.getDate();
-        mydate = new java.sql.Date(BDate.getTime());
+mydate = new java.sql.Date(BDate.getTime());
         try{
             con = DriverManager.getConnection("jdbc:mysql://localhost/student","root","");
             String Quary = "UPDATE std SET first_name=?,last_name=?,gender=?,date_of_birth=?,email=?,phone=?,depatrment=?,dormitory=?,address=? WHERE id=?";
